@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from cafe.models import Menu
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Menu/', ListView.as_view(model=Menu), name ='index'),
     path('Menu/<int:pk>/', DetailView.as_view(model=Menu), name='detail')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

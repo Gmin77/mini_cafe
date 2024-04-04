@@ -5,4 +5,7 @@ from cafe.models import Menu
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin) :
-    list_display = ('id', 'name', 'price', 'description')
+    list_display = ('id', 'name', 'price', 'description', 'image')
+
+    readonly_fields = ('image',)
+

@@ -3,14 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu</title>
+    <style>
+        .menu-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+        }
+        .menu-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div id ="content">
         <h1>Cafe MenuBoard</h1>
         <ul>
             {% for menu in object_list %}
-            <li><a href = "{% url 'detail' menu.id%}"> {{ menu }}</a></li>
+            <!-- <li><a href = "{% url 'detail' menu.id%}"> {{ menu }}</a></li> -->
+            <a href="{% url 'detail' menu.id %}">
+                <div class="menu-card">
+                    <img src="{{ menu.image.url }}">
+                    <h2>{{ menu.name }}</h2>
+                    <p>{{ menu.description }}</p>
+                    <p>Price: {{ menu.price }}원</p>
+                </div>
+            </a>
             {% endfor %}
         </ul>
     </div>
